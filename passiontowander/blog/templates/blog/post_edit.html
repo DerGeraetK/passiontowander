@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1>New Post</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ p_form.as_p }}
+        {{ i_form.as_p }}
+        <button type="submit">Post</button>
+    </form>
+{% endblock %}

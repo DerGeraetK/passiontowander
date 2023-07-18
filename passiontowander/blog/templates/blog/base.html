@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Passion to Wander{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav id="navbar">
+        <a href="#" class="toggle-button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <ul class="navbar-links">
+            <li><a href="{% url 'blog_home' %}">Home</a></li>
+            <li><a href="{% url 'blog_all_posts' %}">Blog</a></li>
+            <li><a href="{% url 'blog_about' %}">About Us</a></li>
+        </ul>
+    </nav>
+    
+    {% block content %}
+    <!-- Content of child templates will be inserted here -->
+    {% endblock %}
+    
+    <!-- Footer -->
+    <footer>
+        <a href="{% url 'imprint' %}">Imprint</a>
+        <a href="{% url 'privacy-policy' %}">Privacy Policy</a>
+        <a href="{% url 'terms-and-conditions' %}">General Terms and Conditions</a>
+        <p>Made with ♡ by Maxi and Gerrit</p>
+    </footer>
+
+    {% block scripts %}
+    <script>
+        document.querySelector('.toggle-button').addEventListener('click', () => {
+            document.querySelector('.navbar-links').classList.toggle('show');
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

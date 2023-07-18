@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<p>Date Posted: {{ post.date_posted }}</p>
+<p>Author: Maxi & Gerrit</p>
+{% for block in content_blocks %}
+    {% if block.heading %}
+        {# Handle HeadingContentBlock #}
+        <h2>{{ block.heading }}</h2>
+    {% elif block.content %}
+        {# Handle TextContentBlock #}
+        <p>{{ block.content }}</p>
+    {% elif block.image %}
+        {# Handle ImageContentBlock #}
+        <img src="{{ block.image.url }}" alt="Image block">
+    {% elif block.video %}
+        {# Handle VideoContentBlock #}
+        <video src="{{ block.video.url }}" controls></video>
+    {% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+{% endblock %}

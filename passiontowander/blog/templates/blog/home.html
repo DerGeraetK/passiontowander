@@ -1,0 +1,61 @@
+{% extends "blog/base.html" %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <!-- Full Cover Image -->
+    <section class="full-cover">
+        <img src="{% static 'images/cover_images/cover_image.jpeg' %}" alt="Cover Image">
+        <h1>Passion to Wander</h1>
+    </section>
+
+    <!-- Padding and Photo -->
+    <div class="padding"></div>
+    <section class="photo-section">
+        <img src="{% static 'images/cover_images/Kelingking_Cave.jpg' %}" alt="Welcome Image">
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <h2>Welcome</h2>
+        <p>
+            We believe that traveling is a way to connect with others, understand different cultures, 
+            appreciate nature, and discover ourselves. This blog is dedicated to sharing our experiences 
+            and highlighting the best places to visit. Join us as we explore the world and make memories together.
+        </p>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <h2>Blog</h2>
+        <div class="blog-posts">
+            {% for post in posts %}
+                <div class="post">
+                    <img src="{{ post.cover_image.url }}" alt="{{ post.title }}">
+                    <h3>{{ post.title }}</h3>
+                    <a href="{% url 'post_detail' post.pk %}">Read</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-section">
+        <h2>About Us</h2>
+        <img src="{% static 'images/cover_images/cover_image.jpeg' %}" alt="About Us Image">
+        <p>
+            We are Maxi and Gerrit. We love travelling, meeting people, exploring and sharing our experiences. 
+            And when we get some good food in the end of an exciting and tiring day, we are happy. 
+            We want to inspire people to explore amazing places. It is not (only) about the perfect photo but 
+            about exploring places and discovering new stuff you didn’t even know existed. That is why we share 
+            our photos as natural as possible and don’t photoshop a lot.
+        </p>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+{% endblock %}
