@@ -125,7 +125,7 @@ body {
     width: 100%;
     max-width: 400px;
     height: 500px;
-    background: url('path_to_your_image') no-repeat center center / cover;
+/*    background: url("{{ MEDIA_URL }}gallery_images/indonesia/java/cover_image.jpeg") no-repeat center center / cover;*/
     margin: auto;
 }
 
