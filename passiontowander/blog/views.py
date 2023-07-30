@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post, HeadingContentBlock, TextContentBlock, UploadedImage, UploadedVideo
+from .models import Post, HeadingContentBlock, TextContentBlock, UploadedImage, UploadedVideo, ScriptContentBlock
 from .forms import PostForm, ImageForm, VideoForm
 
 def home(request):
@@ -44,8 +44,9 @@ def post_detail(request, pk):
     text_content_blocks = TextContentBlock.objects.filter(post=post).order_by('order')
     image_content_blocks = UploadedImage.objects.filter(post=post).order_by('order')
     video_content_blocks = UploadedVideo.objects.filter(post=post).order_by('order')
+    script_content_blocks = ScriptContentBlock.objects.filter(post=post).order_by('order')
 
-    all_blocks = list(heading_content_blocks) + list(text_content_blocks) + list(image_content_blocks) + list(video_content_blocks)
+    all_blocks = list(heading_content_blocks) + list(text_content_blocks) + list(image_content_blocks) + list(video_content_blocks) + list(script_content_blocks)
     all_blocks.sort(key=lambda block: block.order)
 
 #    content_blocks = post.content_blocks.all()

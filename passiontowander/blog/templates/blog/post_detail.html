@@ -20,6 +20,9 @@
     {% elif block.video %}
         {# Handle VideoContentBlock #}
         <video src="{{ block.video.url }}" controls></video>
+    {% elif block.script %}
+        {# Handle ScriptContentBlock #}
+        {{ block.script|safe }}
     {% endif %}
 {% endfor %}
 {% endblock %}

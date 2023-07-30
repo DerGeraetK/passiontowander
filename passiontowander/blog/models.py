@@ -82,3 +82,9 @@ class UploadedVideo(ContentBlock):
 
     def __str__(self):
         return f'Video uploaded by {self.uploaded_by} at {self.uploaded_at}'
+
+class ScriptContentBlock(ContentBlock):
+    script = models.TextField(help_text="Embed your scripts, HTML code, or iframes here.")
+
+    def __str__(self):
+        return self.script[:50] + "..."  # Returns the first 50 characters followed by an ellipsis
